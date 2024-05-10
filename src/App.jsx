@@ -1,14 +1,18 @@
-import { useState } from 'react';
-import Map from './components/Map.jsx';
+import './App.css'
+import BingMaps from './components/BingMaps'
+import MyComponent from './components/MyComponent'
+import Navbar from './components/Navbar'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Map/>
+    <Navbar />
+      <BingMaps />
+      <MyComponent />
     </>
   )
 }
 
-export default App;
+export default App

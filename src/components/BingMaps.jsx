@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import boxImg from '../assets/box.png'
 
 const dummyPackages = [
     {
@@ -72,7 +71,7 @@ const dummyPackages = [
       "latitude": 22.624805,
       "longitude": 88.391481
     }]
-function Map() {
+function BingMaps() {
   const [map, setMap] = useState(null);
 
   useEffect(() => {
@@ -87,6 +86,8 @@ function Map() {
       //Create custom Pushpin
       
       const base64Img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABIQAAASEBDb+0VwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAQ2SURBVFiF7ZffT1tlGMe/7/nRHtoCHXTZEDoYCGPZj8SEOPyReEGUaXbhgjjFRE28dfgHCJS2+A/ITIiJyRaTXYATZ7xQY+IvptmCzgw3qEALp0VGoFJW2tOenvd9vZgQynpoy5ze7Ht5vs/znM/75uQ5z0M459iNpj7xPikQDAAA4+hpfsnz027qkGIBApe8LYTDD4KTWQbHl5yg91CHZ/yBAEyN+I8JAvMBeDFP6GeMCX3Nnb0T/wrA7R/OvyArpUNEEN3r0TBS638VUpcDGAbQ39ThmdoVwNK3F9pEu/1Dq62sHiCbzzOpdcRXVKQTsUJAKICLIoOvodMzUxBAYGTgIETaK0vK6w6XWywp25uzsq7FEV9RoSfXCgExOMHHoKL/UGdPKCdAcMR7wBDQA+BNAPJGgGSxodTlhlJamRskuXYXRIsXApIBcF5iGKjv9KgAQALDA9VEMN7lwFsALGaZstUOh8sNxVGR008nYoivqMik1gsB0QnwEWfSe+LhGsmb1LTjlRV7qgRCZLMMRjNIxVeQTqxClK2QLEqWL1kU2Jz7ICt2UF0DoxnTt1PG0uqCqs+F5w+KJ0/UnY6vJzpC4UgsY2TGK5zlVYQIkimIoUO7sww9GYMkKxDl7SAlsDn3Q7baYKSzQThn6cjiwtjsfKg8qWlHOGc3xOdb608BaAFgX4vH60LhyDJl9LcKZ/kjhBDR9BQbINodSJYSiLI1G8Rqg33PfkgWBXo6YUQWwz/OBGeVRDJ5HID9n7Bf7jkp57wqFI5UzUUWwg21tWq9u7qVEMEURE+uIapOwGp3otR1ALLiyPKJbFuJJfmft5eWnsmVb3rVnHP3zNycO6iqwca62qW6mppWbG0I25ROxJBOxKA4KuCodINyHo0n9KSeMdxaSoua5QlmxoYYY/WBYOiJb8auzEQWF6/miw/P/3H1u6+Hx6KxZKWeMdz54k1vYLsoY403p2cwFQxNHnm0MVG1b2/LVn81tjo+F1HtjLETgiCGAECdHv9+dVmtliyKdt8AmyCUHr4RmMLk7PTE0aYmapEkzC+ogkFpFlBsOfJrdCn0NABRTyVM6xUNsKGMQY9dvzUJl9Nxj8cYKwsFfnYCMP147xtgZ/HcfTuH8n6ED1oPAR4C/P8AhsD9HGQId6eV/0oZTjAkUerfHMk+eLutloqklwBvoIj+kKsR7SCDgF9gVPJ3DVyaB3IMpYPdbQ0gggfgXSigkxUIQDlwUWTEe8Y/OrvVMB3Lz51tb+aE9oPgZezwG84DwDkwTATW/6rn85z7Qd7F5P132o8SYnjByelcICYAnHAySkTiOeP59Ped6he8mg12P/sYJ9xHgFM7ARDOvwDQ94rv8vVC6ha9nA52tz0OEB8I2rcBfMUF0tflGb1WTL2iATZ07uxzT3GB+V1OBxjnva/5Ll/ZTZ2/AZtr6ApYv7OQAAAAAElFTkSuQmCC'
+
+      const imgurl = 'https://cdn.icon-icons.com/icons2/1465/PNG/32/724package_100522.png'
 
 
       dummyPackages.map((pkg) => {
@@ -111,7 +112,9 @@ function Map() {
     setMap(bmap);
   }
 
-  return <div style={{height: "500px", width: "100%"}} id="map"></div>;
+  return <>
+    <div className="w-full h-96" id="map"></div>
+  </>;
 }
 
 function loadScript(url) {
@@ -125,4 +128,4 @@ function loadScript(url) {
   index.parentElement.appendChild(script);
 }
 
-export default Map;
+export default BingMaps;
