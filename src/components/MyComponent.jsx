@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from './Login'
 
 function MyComponent() {
   return (
@@ -9,6 +10,7 @@ function MyComponent() {
   <h1 className="text-3xl font-bold bg-blue-300">
     Hello World!
   </h1>
+  <Login />
     </>
     
   )
