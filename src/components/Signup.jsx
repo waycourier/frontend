@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import loginPageImg from '../assets/delivering.png'
 import logo from '../assets/logoWhite.png'
 import googleIcon from '../assets/search.png'
-
-
-
+import axios from 'axios'
 
 function Signup() {
+    const baseAPIUrl = "http://localhost:8080/api/users/"
 
     const [formData, setFormData] = useState({
-        'firstname': "",
-        'lastname': "",
+        'firstName': "",
+        'lastName': "",
         'username': "",
         'email': "",
         'password': "",
@@ -27,7 +26,7 @@ function Signup() {
             ...formData,
             [name]: value
         })
-        console.log(formData);
+        //console.log(formData);
         if(name === 'email'){
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const isValid = emailRegex.test(value)
@@ -35,6 +34,37 @@ function Signup() {
             setIsValidEmail(isValid)
         }
     }
+
+    const handleFormSubmit = async () => {
+
+        try {
+            const userData = {
+                firstName : formData.firstName,
+                lastName : formData.lastName,
+                email : formData.email,
+                username : formData.username,
+                password : formData.password
+            }
+
+            const createdUserResponse = await axios.post(baseAPIUrl, userData, {
+                auth: {
+                    username: 'admin',
+                    password: 'admin'
+                }
+            });
+
+            if(createdUserResponse.status === 201){
+                console.log("User created :");
+            }
+            else{
+                console.log("Unable to create user");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        console.log(baseAPIUrl);
+    }
+
     return (
         <>
             <div id="loginmain" className='bg-gray-200 flex w-full h-screen '>
@@ -44,21 +74,21 @@ function Signup() {
                         <span className='font-medium text-5xl text-gray-500 mt-4'>Signup</span><br />
 
                         <div className="mt-2 flex flex-col">
-                            <label htmlFor="firstname" className='text-lg font-medium text-gray-500'>First name *</label>
+                            <label htmlFor="firstName" className='text-lg font-medium text-gray-500'>First name *</label>
 
-                            <input type="text" className='w-3/4 min-w-96 border-2 border-blue-200 text-lg  rounded-xl p-2 mt-1 bg-transparent' name="firstname" id="firstname" placeholder='Type your first name' value={formData.firstname} onChange={handleChange} />
+                            <input type="text" className='w-3/4 min-w-96 border-2 border-blue-200 text-lg  rounded-xl p-2 mt-1 bg-transparent' name="firstName" id="firstName" placeholder='Type your first name' value={formData.firstName} onChange={handleChange} />
 
                         {
-                            formData.firstname.trim().length === 0 &&
+                            formData.firstName.trim().length === 0 &&
                             <span className='text-sm font-extralight text-red-800'>First name is required</span>
                         }
                             
                         </div>
 
                         <div className="mt-2 flex flex-col">
-                            <label htmlFor="lastname" className='text-lg font-medium text-gray-500'>Last name</label>
+                            <label htmlFor="lastName" className='text-lg font-medium text-gray-500'>Last name</label>
 
-                            <input type="text" className='w-3/4 min-w-96 border-2 border-blue-200 text-lg  rounded-xl p-2 mt-1 bg-transparent' name="lastname" id="lastname" placeholder='Type your last name' value={formData.lastname} onChange={handleChange} />
+                            <input type="text" className='w-3/4 min-w-96 border-2 border-blue-200 text-lg  rounded-xl p-2 mt-1 bg-transparent' name="lastName" id="lastName" placeholder='Type your last name' value={formData.lastName} onChange={handleChange} />
 
                         </div>
 
@@ -110,7 +140,7 @@ function Signup() {
 
 
                         <div className="mt-6 flex flex-col justify-center items-center gap-4">
-                            <button className='bg-indigo-400 text-white text-lg font-bold w-1/2 px-2 py-2 font-mono rounded-md hover:bg-indigo-500 active:scale-[.98] active:duration-75 transition-all'>Create Account</button>
+                            <button className='bg-indigo-500 text-white text-lg font-bold w-1/2 px-2 py-2 font-mono rounded-md  active:scale-[.98] active:duration-75 transition-all' disabled = {formData.username.length === 0 || formData.email.length ===0 || formData.firstName.length === 0 || formData.password.length === 0 || formData.confirmPassword.length === 0 || (formData.password.length != formData.confirmPassword.length)} onClick={handleFormSubmit}>Create Account</button>
                             <button className='flex border border-gray-400  px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-100 active:scale-[.98] active:duration-75 transition-all'>Sign in with Google <img src={googleIcon} alt="google" className='ml-2' /></button>
                         </div>
 
