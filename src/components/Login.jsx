@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import loginPageImg from '../assets/illustrations/delivering.png'
 import logo from '../assets/logoWhite.png'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
@@ -9,7 +10,7 @@ function Login() {
     <>
       <div id="loginmain" className='bg-gray-200 flex w-full h-screen '>
         <div className="w-full flex items-center justify-center lg:w-1/2" id='left'>
-          <div id='innerContainer' className="bg-white px-10 py-20 rounded-2xl">
+          <div id='innerContainer' className="bg-white shadow-lg border-2 border-gray-200 px-10 py-20 rounded-2xl">
 
             {!validLogin &&
               <div className="w-full flex items-center justify-center bg-red-200 py-2 rounded-md mb-2 font-semibold">
@@ -58,7 +59,7 @@ function Login() {
             <div className="mt-7">
               <div className="">
                 <span>Don't have an account?</span>
-                <a href="" className='ml-1 text-violet-500 font-semibold hover:text-violet-700'>Create one</a>
+                <Link to ="/signup" className='ml-1 text-violet-500 font-semibold hover:text-violet-700'>Create one</Link>
               </div>
             </div>
 

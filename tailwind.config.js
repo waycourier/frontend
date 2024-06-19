@@ -19,7 +19,8 @@ export default {
       red: colors.red,
       green: colors.green,
       blue: colors.blue,
-      webGreen: '#40FF72'
+      webGreen: '#40FF72',
+      purple: colors.purple
     },
     extend: {
       fontFamily: {

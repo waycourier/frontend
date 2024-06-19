@@ -5,6 +5,7 @@ import axios from 'axios'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 
 function Signup() {
     const baseAPIUrl = "http://localhost:8080/api/users/"
@@ -179,7 +180,10 @@ function Signup() {
                         <div className="mt-7">
                             <div className="">
                                 <span>Already have an account?</span>
-                                <a href="" className='ml-1 text-violet-500 font-semibold hover:text-violet-700'>Log in</a>
+                                <Link to="/login" className='ml-1 text-violet-500 font-semibold hover:text-violet-700'>Log in</Link>
+                            </div>
+                            <div className="w-full flex justify-center mt-2">
+                                <Link to="/" className='font-semibold text-blue-500 hover:text-blue-600'> Home </Link>
                             </div>
                         </div>
 

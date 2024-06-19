@@ -1,4 +1,6 @@
 import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 import BingMaps from './components/BingMaps'
 import HomePage from './components/HomePage'
 import Login from './components/Login'
@@ -9,16 +11,26 @@ import Signup from './components/Signup'
 
 function App() {
 
+  const router = createBrowserRouter(
+    [
+      {
+        path: '/',
+        element: <HomePage />
+      },
+      {
+
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/signup',
+        element: <Signup />
+      },
+    ]
+  )
   return (
     <>
-    {/* <Navbar />
-      { /*<BingMaps /> 
-      <Login /> 
-       <Signup /> 
-
-     <HomePage /> */}
-
-     <PackageMap />
+      <RouterProvider router={router} />
     </>
   )
 }

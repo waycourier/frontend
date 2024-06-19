@@ -13,9 +13,9 @@ function PackageMap() {
     const [map, setMap] = useState(null);
 
     useEffect(() => {
-        const API_KEY = "AjH62sL4b0AVrNYnMzPUSoYsgo65_IZH1MxlXqE8tLVm8UWHm8XqXE0O_3db81MC"; // Replace with your actual Bing Maps API key
+        const API_KEY = "AjH62sL4b0AVrNYnMzPUSoYsgo65_IZH1MxlXqE8tLVm8UWHm8XqXE0O_3db81MC";
         const url = `https://www.bing.com/api/maps/mapcontrol?key=${API_KEY}&callback=initMap`;
-        window.initMap = initMap; // Ensure initMap is set before loading the script
+        window.initMap = initMap;
         loadScript(url);
     }, []);
 
